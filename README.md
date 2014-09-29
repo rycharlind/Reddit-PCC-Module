@@ -12,7 +12,7 @@ var Reddit = require('cloud/reddit.js').Reddit;
 var reddit = new Reddit('YOUR-CLIENT-ID', 'YOUR-CLIENT-SECRET', 'YOUR-CALLBACK-URL');
 ```
 
-## Examples
+## How To Examples
 ####Note:  
 These examples are intended to work with a Parse Express App.  You can follow the below tutorial to set up your app.
 https://www.parse.com/docs/hosting_guide
@@ -60,4 +60,25 @@ app.get('/auth_callback', function(req, res) {
         });
     });
 });
+```
+
+#### Step 3 - API Request
+Once you have the access token, you can now use that to make API request.  The below example takes a param of username that we stored in the database.  We first find that use so we can grab their corresponding access token and make the request.  We then render the reponse text to the page.  
+```
+app.get('/api', function(req, res) {
+    findUser(req.query.name).then(function(results) {
+        var user = results[0];
+        reddit.set('access_token', user.get('access_token'));
+        return reddit.api(req.query.action);
+    }).then(function(response) {
+        res.render('response', { response: response.text });
+    });
+});
+
+function findUser(name) {
+    var Reddit_User = Parse.Object.extend("Reddit_User");
+    var query = new Parse.Query(Reddit_User);
+    query.equalTo("name", name);
+    return query.find();
+}
 ```
