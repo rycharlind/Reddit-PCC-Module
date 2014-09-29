@@ -30,8 +30,8 @@ These examples are intended to work with a Parse Express App.  See reference abo
 #### Step 1 - OAuth Request
 Retrieve the OAuth request url and redirect the user to that location. 
 - @Method:  authUrl
-- @Param: String duration
-- @Param: Array<String> scope 
+- @Param: String - duration
+- @Param: Array(String) - scope 
 ```
 app.get('/auth_request', function(req, res) {
     res.redirect(reddit.authUrl('permanent', ['identity','read','vote','submit']));
