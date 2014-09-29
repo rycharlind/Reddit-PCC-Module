@@ -5,17 +5,25 @@ Reddit API Module for Parse Cloud Code
 
 ## Getting Started
 1. Add `reddit.js` to your cloud directory. 
-2. Add the following two lines of code near the top of your `app.js`.
+2. Add the following two lines of code near the top of `app.js`.
 
 ```
 var Reddit = require('cloud/reddit.js').Reddit;
 var reddit = new Reddit('YOUR-CLIENT-ID', 'YOUR-CLIENT-SECRET', 'YOUR-CALLBACK-URL');
 ```
 
+## References
+
+#### Parse Dynamic Express App Hosting Guide
+https://www.parse.com/docs/hosting_guide
+
+#### Reddit API OAuth Guide
+https://github.com/reddit/reddit/wiki/OAuth2
+
 ## How To Examples
 ####Note:  
-These examples are intended to work with a Parse Express App.  You can follow the below tutorial to set up your app as a Dynamic Express App.  
-https://www.parse.com/docs/hosting_guide
+These examples are intended to work with a Parse Express App.  See reference above for more info how to set up. 
+
 
 ### OAuth Flow
 
