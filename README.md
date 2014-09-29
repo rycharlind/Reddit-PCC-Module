@@ -76,7 +76,7 @@ app.get('/auth_callback', function(req, res) {
 ```
 
 #### Step 3 - API Request
-Once you have the access token, you can now use that to make API request.  The below example takes a param of username that we stored in the database.  We first find that use so we can grab their corresponding access token and make the request.  We then render the reponse text to the page.  
+Once you have the access token, you can now use that to make API requests.  The below example takes a param of username that we stored in the database.  We first find the user so we can grab their corresponding access token and make the request.  We then render the reponse text to the page.  
 ```
 app.get('/api', function(req, res) {
     findUser(req.query.name).then(function(results) {
