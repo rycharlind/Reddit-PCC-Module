@@ -14,13 +14,16 @@ var reddit = new Reddit('YOUR-CLIENT-ID', 'YOUR-CLIENT-SECRET', 'YOUR-CALLBACK-U
 
 ## How To Examples
 ####Note:  
-These examples are intended to work with a Parse Express App.  You can follow the below tutorial to set up your app.
+These examples are intended to work with a Parse Express App.  You can follow the below tutorial to set up your app as a Dynamic Express App.  
 https://www.parse.com/docs/hosting_guide
 
 ### OAuth Flow
 
 #### Step 1 - OAuth Request
-Retrieve the OAuth request url and redirect the user there so they can allow your app access.
+Retrieve the OAuth request url and redirect the user to that location. 
+- @Method:  authUrl
+- @Param: String duration
+- @Param: Array<String> scope 
 ```
 app.get('/auth_request', function(req, res) {
     res.redirect(reddit.authUrl('permanent', ['identity','read','vote','submit']));
