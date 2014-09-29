@@ -29,7 +29,7 @@ These examples are intended to work with a Parse Express App.  See reference abo
 
 #### Step 1 - OAuth Request
 Retrieve the OAuth request url and redirect the user to that location. 
-- @Method:  authUrl
+**authUrl
 - @Param: String - duration
 - @Param: Array(String) - scope 
 ```
@@ -39,7 +39,9 @@ app.get('/auth_request', function(req, res) {
 ```
 
 #### Step 2 - OAuth Callback
-After the user has clicked allow, reddit will post back to the specifid callback url above with a code that you will use to request an access token.  Once you have received the access toke, we persist it into a Parse table called `Reddit-User`.
+After the user has clicked allow, reddit will post back to the specifid callback url with a code that you will use to request an access token.  In this exmaple, we will persist the access token to a Parse table called `Reddit-User` once we receive it.
+**requestAccessToken
+- @Param: String code
 ```
 app.get('/auth_callback', function(req, res) {
     var Reddit_User = Parse.Object.extend("Reddit_User");
